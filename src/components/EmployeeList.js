@@ -2,7 +2,7 @@ import Table from "react-bootstrap/Container";
 import React, { Component } from "react";
 export function EmployeeList(props) {
   return (
-    <Table striped bordered hover>
+    <Table striped bordered >
       <thead>
         <tr>
           <th>#</th>
