@@ -34,6 +34,7 @@ class EmployeeMain extends Component {
   }
   getUsersApi = () => {
     retrieveUsers().then((res) => {
+      console.log(res);
       this.setState({ employees: res.data.results }).catch((error) =>
         console.error(error)
       );
@@ -62,11 +63,18 @@ class EmployeeMain extends Component {
       <>
         <Container fluid>
           <Row>
-            <SearchBar />
+            <SearchBar
+              search={this.state.search}
+              handleStateChange={this.handleStateChange}
+            />
           </Row>
           <Row>
             <Col>
-              <EmployeeList />
+              <EmployeeList
+                employees={employeeSort}
+                sort={this.state.sort}
+                handleSort={this.handleSort}
+              />
             </Col>
           </Row>
         </Container>
