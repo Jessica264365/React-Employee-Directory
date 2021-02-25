@@ -15,7 +15,6 @@ class EmployeeMain extends Component {
       sort: true,
     };
     this.handleStateChange = this.handleStateChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSort = this.handleSort.bind(this);
   }
   handleStateChange(e) {
