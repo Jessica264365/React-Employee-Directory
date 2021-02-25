@@ -16,7 +16,7 @@ export default function TheJumbotron() {
       className="justify-content-center text-center"
       style={styles.jumbotron}
     >
-      <Container style={styles.container}>
+      <Container>
         <h1>Employee Directory</h1>
         <p>Use the search bar to find an employee</p>
       </Container>

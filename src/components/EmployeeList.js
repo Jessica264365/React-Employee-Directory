@@ -1,10 +1,13 @@
 import Table from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import React from "react";
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSortAlphaDownAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function EmployeeList(props) {
+  // Font Awesome icon for sorting
+  const icon = <FontAwesomeIcon icon={faSortAlphaDownAlt} />;
+  // Saving employee props to a variable so it's easier to use
   const employees = props.employees;
   console.log(employees);
   // Get the last name of an employee to be used in the compare sort
@@ -47,48 +50,53 @@ export default function EmployeeList(props) {
   }
 
   return (
-    <Table  className="table-striped table-responsive table align-middle">
+    <Table className="table-striped table-responsive table align-middle ms-4">
       <thead>
-        <tr className="table align-middle" >
-          <th onClick={props.handleSort}>Name</th>
+        <tr className="table align-middle">
+          <th>
+            Name
+            <button onClick={props.handleSort} className="btn">
+              {icon}
+            </button>
+          </th>
           <th>Image</th>
           <th>Email</th>
           <th>Phone</th>
           <th>Location</th>
-        </tr >
+        </tr>
       </thead>
       <tbody>
         {/* If there are employees in the array map through them and create a table cell for each one */}
         {employees.length > 0 ? (
           employees.map((employee) => {
             return (
-              <tr >
-                <td
-                  
-                >{`${employee.name.first} ${employee.name.last}`}</td>
-                <td >
+              <tr>
+                <td>{`${employee.name.first} ${employee.name.last}`}</td>
+                <td>
                   <img
-                    className="pl-3"
+                    className="center"
                     src={employee.picture.thumbnail}
                     alt={employee.name.first}
                   />
                 </td>
-                <td >{employee.email}</td>
-                <td >{employee.phone}</td>
+                <td>{employee.email}</td>
+                <td>{employee.phone}</td>
 
-                <td >{employee.location.city}</td>
+                <td>{employee.location.city}</td>
               </tr>
             );
           })
         ) : (
-          <tr>
-            <td> </td>
+          <Col lg={12}>
+            <tr>
+              <td> </td>
 
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </Col>
         )}
       </tbody>
     </Table>

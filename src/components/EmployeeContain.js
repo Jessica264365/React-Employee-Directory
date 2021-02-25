@@ -69,13 +69,15 @@ class EmployeeMain extends Component {
             </Col>
           </Row>
           <Row>
-            <Col lg={12}>
+            <Col lg={1}></Col>
+            <Col lg={10}>
               <EmployeeList
                 employees={employeeSort}
                 sort={this.state.sort}
                 handleSort={this.handleSort}
               />
             </Col>
+            <Col lg={1}></Col>
           </Row>
         </Container>
       </>
