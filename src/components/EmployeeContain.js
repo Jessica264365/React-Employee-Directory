@@ -5,6 +5,7 @@ import retrieveUsers from "../utils/RandomUserAPI";
 import Container from "react-bootstrap/Container";
 import EmployeeList from "./EmployeeList";
 import SearchBar from "./SearchBar";
+import TheJumbotron from "./Jumbotron";
 
 class EmployeeMain extends Component {
   //constructor function for component
@@ -56,15 +57,19 @@ class EmployeeMain extends Component {
     console.log(employeeSort);
     return (
       <>
-        <Container fluid>
+        <TheJumbotron />
+        <Container className="container-fluid">
           <Row>
-            <SearchBar
-              search={this.state.search}
-              handleStateChange={this.handleStateChange}
-            />
+            <Col lg={4}></Col>
+            <Col lg={4}>
+              <SearchBar
+                search={this.state.search}
+                handleStateChange={this.handleStateChange}
+              />
+            </Col>
           </Row>
           <Row>
-            <Col>
+            <Col lg={12}>
               <EmployeeList
                 employees={employeeSort}
                 sort={this.state.sort}

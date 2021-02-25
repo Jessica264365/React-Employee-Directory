@@ -1,5 +1,8 @@
 import Table from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
 import React from "react";
+
+
 
 export default function EmployeeList(props) {
   const employees = props.employees;
@@ -44,34 +47,36 @@ export default function EmployeeList(props) {
   }
 
   return (
-    <Table striped bordered>
+    <Table  className="table-striped table-responsive table align-middle">
       <thead>
-        <tr>
+        <tr className="table align-middle" >
           <th onClick={props.handleSort}>Name</th>
           <th>Image</th>
           <th>Email</th>
           <th>Phone</th>
           <th>Location</th>
-        </tr>
+        </tr >
       </thead>
       <tbody>
         {/* If there are employees in the array map through them and create a table cell for each one */}
         {employees.length > 0 ? (
           employees.map((employee) => {
             return (
-              <tr>
-                <td>
+              <tr >
+                <td
+                  
+                >{`${employee.name.first} ${employee.name.last}`}</td>
+                <td >
                   <img
                     className="pl-3"
                     src={employee.picture.thumbnail}
                     alt={employee.name.first}
                   />
                 </td>
+                <td >{employee.email}</td>
+                <td >{employee.phone}</td>
 
-                <td>{`${employee.name.first} ${employee.name.last}`}</td>
-                <td>{employee.phone}</td>
-                <td>{employee.email}</td>
-                <td>{employee.location.city}</td>
+                <td >{employee.location.city}</td>
               </tr>
             );
           })
