@@ -5,7 +5,7 @@ import retrieveUsers from "./utils/RandomUserAPI";
 import Container from "react-bootstrap/Container";
 import EmployeeList from "./EmployeeList";
 import SearchBar from "./SearchBar";
-import retrieveUsers from "./utils/RandomUserAPI";
+
 class EmployeeMain extends Component {
   constructor() {
     super();
@@ -32,21 +32,19 @@ class EmployeeMain extends Component {
       ? this.setState({ sort: false })
       : this.setState({ sort: true });
   }
-  getUsersApi = () => {
-    retrieveUsers().then((res) => {
-      console.log(res);
-      this.setState({ employees: res.data.results }).catch((error) =>
-        console.error(error)
-      );
-    });
-  };
   componentDidMount() {
     this.getUsersApi();
   }
+  getUsersApi = () => {
+    retrieveUsers()
+      .then((res) => this.setState({ employees: res.data.results }))
+      .catch((err) => console.log(err));
+  };
+
   render() {
-    let filterByName = this.state.results.filter((employee) => {
+    let filterByName = this.state.employees.filter((employee) => {
       let name = `${employee.name.first} ${employee.name.last}`;
-      return name.toLowerCase().includes(this.state.toLowerCase())
+      return name.toLowerCase().includes(this.state.search.toLowerCase())
         ? true
         : false;
     });
@@ -58,7 +56,7 @@ class EmployeeMain extends Component {
     } else {
       employeeSort = filterByName;
     }
-
+    console.log(employeeSort);
     return (
       <>
         <Container fluid>

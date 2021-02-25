@@ -1,34 +1,47 @@
 import Table from "react-bootstrap/Container";
 import React, { Component } from "react";
-export function EmployeeList(props) {
+
+export default function EmployeeList(props) {
+  const employees = props.employees;
+  console.log(employees);
   return (
-    <Table striped bordered >
+    <Table striped bordered>
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th onClick={props.handleSort}>Name</th>
+          <th>Image</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Location</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        {employees.length > 0 ? (
+          employees.map((employee) => {
+            return (
+              <tr>
+                <td>
+                  {" "}
+                  <img className="pl-3" src={employee.picture.thumbnail} />
+                </td>
+
+                <td>{employee.name.first + " " + employee.name.last}</td>
+                <td>{employee.phone}</td>
+                <td>{employee.email}</td>
+                <td>{employee.location.city}</td>
+              </tr>
+            );
+          })
+        ) : (
+          <tr>
+            <td> </td>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        )}
       </tbody>
     </Table>
   );
