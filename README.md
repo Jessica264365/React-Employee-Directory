@@ -23,7 +23,7 @@
 
 This is an employee directory built with React. Using the [Random User API](https://randomuser.me/documentation), 100 "employees" are generated in a table. These employees can be filtered by using the search bar. When a user starts typing in the search bar a function is executed to return employees with corresponding letters in their name. The employees can also be sorted by last name when a user clicks on the icon by the "Name" table header. Once the icon is clicked the employees are sorted in descending order by last name.
 
-![](./public/images/search.GIF)
+![](./public/images/search.gif)
 
 ### Built With
 
